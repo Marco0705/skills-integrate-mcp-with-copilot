@@ -3,15 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const activitySelect = document.getElementById("activity");
   const signupForm = document.getElementById("signup-form");
 
-    const activity = button.getAttribute("data-activity");
-    const email = button.getAttribute("data-email");
-
-    try {
-      const response = await fetch(
     const filterText = document.getElementById("filter-text");
     const sortSelect = document.getElementById("sort-select");
     let allActivities = {};
-        `/activities/${encodeURIComponent(
+  
     // Render activities with filtering and sorting
     function renderActivities(activities) {
       // Get filter and sort values
@@ -111,22 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Error fetching activities:", error);
       }
     }
-        messageDiv.className = "error";
-      }
-
-      messageDiv.classList.remove("hidden");
-
-      // Hide message after 5 seconds
-      setTimeout(() => {
-        messageDiv.classList.add("hidden");
-      }, 5000);
-    } catch (error) {
-      messageDiv.textContent = "Failed to sign up. Please try again.";
-      messageDiv.className = "error";
-      messageDiv.classList.remove("hidden");
-      console.error("Error signing up:", error);
-    }
-  });
 
   // Filter and sort listeners
   filterText.addEventListener("input", () => renderActivities(allActivities));
